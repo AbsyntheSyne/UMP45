@@ -14,11 +14,12 @@ client = InteractionBot(command_sync_flags=cmdFlags, intents=ints, test_guilds=[
 
 if not os.path.isfile("elems.sav"):
     with open("elems.sav", "wb") as file:
-        pickle.dump([False, None, []], file)
+        pickle.dump([False, None, [], None], file)
     client.logChannel = None
     client.logChannelID = None
     client.doLog = False
     client.ignoredChannels = []
+    client.muteRole = None
 else:
     with open("elems.sav", "rb") as file:
         data = pickle.load(file)
@@ -26,6 +27,7 @@ else:
     client.logChannel = None
     client.doLog = data[0]
     client.ignoredChannels = data[2]
+    client.muteRole = data[3]
 
 client.add_cog(ListenerCog(client))
 client.add_cog(CommandCog(client))
