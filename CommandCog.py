@@ -119,3 +119,9 @@ class CommandCog(Cog):
             await inter.channel.purge(limit=amount)
             embed = Embed(description=str(amount) + " messages have been deleted")
             await inter.response.send_message(embed=embed)
+
+    @slash_command(default_member_permissions=perms)
+    async def pet(self, inter: ApplicationCommandInteraction, user: disnake.Member):
+        embed = Embed(description="You have petted " + user.mention + "!")
+        await inter.response.send_message(embed=embed)
+
