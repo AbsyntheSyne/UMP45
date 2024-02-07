@@ -121,7 +121,7 @@ class CommandCog(Cog):
             await inter.response.send_message(embed=embed)
 
     @slash_command(default_member_permissions=perms)
-    async def pet(self, inter: ApplicationCommandInteraction, user: disnake.Member):
-        embed = Embed(description="You have petted " + user.mention + "!")
-        await inter.response.send_message(embed=embed)
+    async def pet(self, inter: ApplicationCommandInteraction):
+        await inter.response.send_message("Thanks for petting me, " + inter.author.mention + "!")
+
 
